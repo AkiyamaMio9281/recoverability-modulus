@@ -8,5 +8,6 @@ from . import modulus
 from . import recover
 from . import budget
 from . import theory
+from . import omni
 
-__all__ = ["operators", "modulus", "recover", "budget", "theory"]
+__all__ = ["operators", "modulus", "recover", "budget", "theory", "omni"]

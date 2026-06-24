@@ -38,6 +38,7 @@ budget needed to recover the clean distribution.
 | **D5** | **cross-operator collapse**: one modulus orders masking / blur / grayscale / Gaussian onto one curve (Spearman ρ ≈ 0.99). | `results/D5_cross_operator_synth.png` |
 | **D6** | clean-space weak-metric rate (translates OMNI's Eq. 21), with a provable KL→χ² bridge lemma. | `notes/M4_clean_space_rate.md` |
 | **D7** | clean-budget decomposition: recoverable `O(1/√n)` + null-space `O(1/√m)` → OMNI's `h†` as `λ→0`. | `notes/M5_budget_decomposition.md` |
+| **D8** | **the actual SFBD-OMNI algorithm** (closed-form Gaussian): `Ψ` controls clean-space convergence — corrupted KL converges for all κ while clean W2 stalls (Identifiability ≠ Recoverability, live in the iterates). | `results/D8_omni_dynamics.png`, `notes/M6` |
 
 ![D2 main figure](results/D2_budget_curve.png)
 
@@ -52,9 +53,10 @@ src/recmod/
   recover.py     # Gaussian–linear closed-form recovery, per-direction precision, sample budgets
   budget.py      # Ψ-driven budget prediction
   theory.py      # KL→χ² bridge constant (M4 lemma)
-experiments/     # e1..e4 reproduce D1, D2, D3, D5
-tests/           # pytest (36 tests)
-notes/           # derivations: M1 (Prop-1 recovery), M3 (Picard), M4 (rate), M5 (decomposition)
+  omni.py        # closed-form SFBD-OMNI alternating minimization (the actual algorithm)
+experiments/     # e1..e5 reproduce D1, D2, D3, D5, D8
+tests/           # pytest (40 tests)
+notes/           # derivations: M1 (Prop-1 recovery), M3 (Picard), M4 (rate), M5 (decomposition), M6 (OMNI dynamics)
 results/         # figures + captions
 ```
 
@@ -67,6 +69,7 @@ python experiments/e1_verify_psi.py          # D1
 python experiments/e2_budget_curve.py        # D2 (main figure)
 python experiments/e3_sample_complexity.py   # D3
 python experiments/e4_cross_operator.py      # D5
+python experiments/e5_omni_dynamics.py       # D8 (the actual OMNI algorithm)
 ```
 
 ## Caveats / open questions

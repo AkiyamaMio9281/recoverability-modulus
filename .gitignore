@@ -23,3 +23,7 @@ env/
 Thumbs.db
 .idea/
 .vscode/
+
+# personal email artifacts (contain real name) — keep local, not public
+results/summary_onepager.*
+experiments/make_summary.py
